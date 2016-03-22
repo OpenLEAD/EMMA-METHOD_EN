@@ -1,0 +1,94 @@
+\section{Control}
+
+\subsection{Simulation}
+
+In order to represent the coating application and simulate the mininal
+environment variables that describe this process inside a hidreletric turbine,
+it was created an simulation environment with help of the OpenRAVE - Open
+Robotics and Animation Virtual Environment. The components of interest of the
+turbine were modeled either using a Computer Aided Design software or were
+aquisited using a laserscanner when the avaible information were not compatible
+with the true aspect of the turbine (Blade).
+
+MH12 imported 
+coating gun is approximated by a cilinder with 300mm length and 50mm radius and
+is attached to the tip of the endeffector.
+
+%TODO determinar os eixos e ilustrar o ambiente de simulação
+
+angle of attack of the turbine blades can vary from $0$ to $29^o$, however the
+angle has to be chosen a priori beacuse the hidraulic circuit has to be active
+to move the blades around its own axis and once dryed the blades get blocked.
+It is going to be used $24^o$ as starting point.
+
+the rotor can rotate freely, changing the position of the blades inside the
+turbine, this task is hard to perform and must be avoided as much as possible
+
+the coating gun must be at a distance of $235\pm 5$ mm during the operation
+
+angle of incidence of the coating powder, i.e the angle between the coating gun
+and the surface of the blade must obey a $90\pm 60^o$ tolerance, however it is
+adviseable not surpass the $30^o$ mark.
+
+Simulation of the corners
+
+rotor angle from $0$ to $30$
+
+$235\pm 5$ to the blade
+
+angle of attack is $90^o$ with relaxation of $30^o$
+
+y $-2970 \pm 250$ mm with 50mm steps (500mm band with 50mm step)
+
+x $715 \pm 485$ mm with 50mm steps.
+
+the width of the blade was segmented in 7 possibles positions
+
+
+Result
+
+found one position that it is possible to coat three of the corner, with
+exception of the top right corner, with two of the variables fixed. $y=3220$ mm
+and $x=1200mm$ and the rotor can be left at $0^o$ to make the process easier
+without any harm to the coverage.
+
+With these two variables fixed, the coverage of the entire blade is verified,
+because the surface of the blade is not planar and its shape make the distance
+to the robot vary and can violate one of the restrictions.
+
+In order to try to accomplish full coverage and coat the right corner, some
+relaxations were made in comparsion with the previous simulation:
+
+angle of attack can vary from 0 to 29
+
+the rotor can be rotated from 0 to 30 with 3 step
+
+the tolerance of the angle of incidence is increased to 60
+
+z is from -1240 to 1240 due mechanical restrictions between the rail and the
+turbine chamber/arc
+
+The height adjustment of the robot base was prefered against the rotation of the
+rotor or the blade, because the former needs a logistic effort to disassemble
+and reassemble the whole system in order to ensure the safety of operation and
+the change of angle of attack has the hard limitation of the hydraulic blocking.
+
+
+\subsection{Trajectory Planning}
+
+paralals and meridians
+
+paralel is a 4th degree polinom
+
+\cite{juttler2002least} uses the normal to better describe the analitical
+function that represent a point cloud, and not only the points.
+
+The rotor is situaded inside a sphere and this is explored as the paralels are
+numerically calculated as the intersection of the surface of a growing sphere
+and the surface of the blade previously calculated.
+
+ 3 mms offset
+between paralels
+
+
+ 
